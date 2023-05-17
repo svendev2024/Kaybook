@@ -1,0 +1,36 @@
+<section class="home">
+
+<nav class="subnav">
+  <ul class="subnav-container">
+    <li ng-class="{'active': homeCtrl.active === 'joined'}" ng-click="homeCtrl.goToJoined()">
+      <p>joined </p>
+    </li>
+    <li ng-class="{'active': homeCtrl.active === 'explore'}" ng-click="homeCtrl.goToExplore()">
+      <p>explore</p>
+    </li>
+    <li ng-class="{'active': homeCtrl.active === 'feed'}" ng-click="homeCtrl.goToFeed()">
+      <p>feed</p>
+    </li>
+    <li ng-class="{'active': homeCtrl.active === ''}" ng-click="homeCtrl.goToSocial()">
+      <p>social</p>
+    </li>
+    <li ng-class="{'active': homeCtrl.active === 'market'}"ng-click="homeCtrl.goToMarket()">
+      <p>market</p>
+    </li>
+  </ul>
+</nav>
+
+  <section>
+    <profile-tile ng-repeat="tile in homeCtrl.allProfiles" profile="tile"></profile-tile>
+  </section>
+
+  <section>
+    <post-tile ng-repeat="post in homeCtrl.postsArr" post="post"></post-tile>
+  </section>
+
+  <ul>
+    <merch-tile ng-repeat="merch in homeCtrl.merchesArr" merch="merch"></merch-tile>
+  </ul>
+
+
+</section>

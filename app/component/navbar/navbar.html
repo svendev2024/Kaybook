@@ -1,0 +1,57 @@
+<header class="navbar-component">
+  <div class="navbar-row">
+
+    <div class="navbar-main" id="navbar-logo" ng-click="navbarCtrl.home()">
+      <div class="navbar-main-logo"> KAYBOOK </div>
+    </div>
+
+    <div class="navbar-searchbar navbar-main">
+        <input type="text" ng-show="navbarCtrl.loggedIn" ng-Change="navbarCtrl.searchPages()" ng-Blur="navbarCtrl.searchEnd()" ng-model="navbarCtrl.searchName" placeholder="search"> 
+        <div class="search-results" ng-if="navbarCtrl.showResults" ng-repeat="page in navbarCtrl.pagesArr" ng-click="navbarCtrl.goToPage(page._id)">
+          {{page.pageName}}
+        </div>
+    </div>
+
+    <div class="navbar-auth navbar-main">
+      {{ navbarCtrl.profile.profilePicURI }}
+      <span class="navbar-login"ng-if="navbarCtrl.signupBtn" class="signup" ng-click="navbarCtrl.goSignUp()">sign up</span>
+      <span class="navbar-login" ng-if="navbarCtrl.loginBtn" class="signup" ng-click="navbarCtrl.goLogin()">login</span>
+      
+      <span class="navbar-menu navbar-main" ng-if="navbarCtrl.loggedIn" uib-dropdown on-toggle="toggled(open)">
+        <div> {{ navbarCtrl.profile }} </div>
+        <!-- <img class="menu-pic" src="http://placehold.it/50x50" /> -->
+        <img class="menu-pic" ng-src="{{navbarCtrl.profilePic}}" uib-dropdown-toggle alt="">
+        <ul class="dropdown-menu navbar-dropdown" uib-dropdown-menu aria-labelledby="simple-dropdown">
+          <li class="menu-header">
+            <img src="{{navbarCtrl.profile.profilePicURI}}" alt="">
+            <div class="header-names">
+              <p> {{ navbarCtrl.profile.name}} </p>
+              <p> name@email.com</p>
+            </div>
+          </li>
+          <li class="menu-op" ng-click="navbarCtrl.home()">
+            <img src="https://placeholdit.co//i/30x30?&bg=grey&fc=white&text=30 x30"> 
+            <p> home</p>
+          </li>
+          <li class="menu-op" ng-click="navbarCtrl.myProfile()">
+            <img src="https://placeholdit.co//i/30x30?&bg=grey&fc=white&text=30 x30"> 
+            <p> profile</p>
+          </li>
+          <li class="menu-op" ng-click="navbarCtrl.myAccount()">
+            <img src="https://placeholdit.co//i/30x30?&bg=grey&fc=white&text=30 x30"> 
+            <p> account</p>
+          </li>
+          <li class="menu-op" ng-click="">
+            <img src="https://placeholdit.co//i/30x30?&bg=grey&fc=white&text=30 x30"> 
+            <p> nite mode</p>
+          </li>
+          <li class="menu-op" ng-click="navbarCtrl.logout()">
+            <img src="https://placeholdit.co//i/30x30?&bg=grey&fc=white&text=30 x30"> 
+            <p> logout</p>
+          </li>
+        </ul>
+      </span>
+    </div>
+
+  </div>
+</header>

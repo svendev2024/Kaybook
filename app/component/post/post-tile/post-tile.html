@@ -1,0 +1,45 @@
+<section class="dynamic-grid" angular-grid="postTileCtrl.posts" grid-width="300" gutter-size="10" angular-grid-id="post-tiles" refresh-on-img-load="false" >
+
+    <section id="{{post._id}}" class="post-tile grid" ng-repeat="post in postTileCtrl.posts" >
+    
+         
+          <section class="header">
+            <img class="header-pic" ng-src="{{post.posterID.profilePicURI}}">
+            <div class="header-names" ng-click="postTileCtrl.goToProfile(post.posterID._id)"> 
+              <p> {{post.posterID.name}} </p>
+              <p> @ {{post.posterID.name}} </p>
+            </div>
+    
+            <div class="header-options">
+              . . .
+            </div>
+            
+          </section>
+    
+          <section class="body" ng-click="postTileCtrl.goToPost(post._id)">
+
+              <h2 class="title"> {{ post.title }} </h2>
+
+    
+            <section class="image">
+              <img  ng-if="!postTileCtrl.isVid" ng-src="{{post.picURI }}" alt="">
+              <video ng-if="postTileCtrl.isVid" ng-src="{{post.picURI}}" controls>
+                  Your browser does not support HTML5
+              </video>
+            </section>
+    
+            <div class="content" ta-bind="text" ng-model="post.content" ta-readonly='disabled'></div>
+    
+    
+            <div class="post-poll">
+                <section class="poll" ng-repeat="choice in post.choices">
+                  <img ng-src="{{choice.picURI}}" alt="">
+                    {{choice.name}} {{ choice.voters.length }} 
+                </section>
+            </div>
+    
+    
+          </section>
+        
+          </section>
+    </section>

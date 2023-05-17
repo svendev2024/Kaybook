@@ -1,0 +1,110 @@
+.answer-item {
+  border-top: 1px solid lightgrey;
+  padding: 5px;
+  width: 97%;
+  margin-left: 3%;
+  margin-top: 10px;
+
+  .answer-item-header {
+    display: block;
+    width: 100%;
+    padding-left: 1%;
+    img {
+      display: inline-block;
+      vertical-align: middle;
+      width: 8%;
+      min-width: 20px;
+      border-radius: 50%;
+    }
+    .header-names {
+      display: inline-block;
+      vertical-align: middle;
+      .name, .date {
+        display: block;
+      }
+    }
+
+    .header-options {
+      vertical-align: middle;
+      text-align: end;
+      float: right;
+      padding: 10px;
+
+      .dropdown-menu {
+        margin: 0;
+        padding: 0;
+      }
+      .options-btn {
+        display: block;
+        width: 100%;
+        padding: 5px 10px;
+        border-bottom: 1px solid rgb(153, 153, 153);
+      }
+    }
+
+  }
+
+  .answer-item-content {
+    display: block;
+    padding: 20px 10px;
+    width: 100%;
+    img {
+      max-width: 100%;
+    }
+
+    .comment-editor {
+      width: 100%;
+      .ta-scroll-window > .ta-bind {
+        min-height: 0px;
+        width: 100%;
+        // width: 80%;
+      }
+      .ta-scroll-window, .form-control {
+        width: 100%;
+        min-height: 0px;
+        // width: 80%;
+      }
+    }
+  
+    .answer-editor {
+      .ta-scroll-window > .ta-bind {
+        min-height: 100px;
+      }
+      .ta-scroll-window, .form-control {
+        min-height: 100px;
+      }
+    }
+
+  }
+  
+  .answer-item-footer {
+    display: block;
+    width: 100%;
+
+    .footer-btn {
+      display: inline-block;
+      margin: 10px;
+    }
+
+    .edit-btns {
+      display: block;
+      width: 100%;
+      text-align: end;
+
+      .edit-btn {
+      padding: 5px;
+      margin: 10px;
+    }
+    .update {
+      outline: 1px solid grey;
+      background-color: aqua;
+    }
+
+    }
+  }
+
+}
+
+
+  
+

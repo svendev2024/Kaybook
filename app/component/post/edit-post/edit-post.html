@@ -1,0 +1,67 @@
+<section class="edit-post">
+
+  <form name="editPostForm" ng-submit="editPostCtrl.updatePost()">
+
+
+    <input class="post-title" type="text" ng-minlength="4" placeholder="title" ng-model="editPostCtrl.post.title">
+
+    <section class="post-pic" ng-if="editPostCtrl.showPic">
+        <div class="post-preview">
+          <img class="post-preview-pic" ng-src="{{editPostCtrl.post.picURI}}" alt="">
+        </div>
+        <div class="pic-op" ng-if="!editPostCtrl.showInput" ngf-select>
+          <p> Upload </p>
+        </div>
+        <div class="pic-op" ng-if="!editPostCtrl.showInput" ng-click="editPostCtrl.showInput = true">
+          <p> Link </p>
+        </div>
+        <div class="pic-input" ng-if="editPostCtrl.showInput">
+          <input name="pic" placeholder="pic uri" type="text" ng-minlength="4" ng-model="editPostCtrl.post.picURI"></input> 
+          <span class="pic-cancel" ng-click="editPostCtrl.showInput = false"> X </span>
+        </div>
+    </section>
+
+    <textarea class="post-pic-desc" ng-if="editPostCtrl.showPic" name="Desc" type="text" ng-minlength="4" ng-model="editPostCtrl.post.desc" placeholder="desription"></textarea>
+
+    <div class="post-content">
+      <div class="ta-editor" ng-if="!editPostCtrl.showPic"  text-angular ng-model="editPostCtrl.post.content" ta-toolbar="[['bold','italics', 'underline', 'ul', 'ol', 'insertImage', 'insertLink', 'insertVideo'],['redo', 'undo']]"></div>
+    </div>
+
+
+    <section class="post-poll" ng-if="editPostCtrl.showPoll">
+      <section class="choice-table" ng-show="editPostCtrl.post.choices[0]">
+
+        <table class="choice-table">
+            <h2 class="choice-header"> Choices </h2>
+            <tr ng-repeat="choice in editPostCtrl.post.choices track by $index">
+              <td> 
+                <p ng-if="choice.name"> {{choice.name}} </p>
+                <img ng-if="choice.picURI" ng-src="{{choice.picURI}}" alt=""> 
+              </td>
+              <td class="choice-table-last"> <span class="choice-remove-btn" ng-click="editPostCtrl.removeChoice(choice)"> - </span></td>
+            </tr>
+            <tr class="choice-content">
+              <td class="choice-content-btns" ng-if="!editPostCtrl.showChoiceInputs">
+                  <span class="content-btn" ng-click="editPostCtrl.choseText()">text</span>
+                  <span class="content-btn" ng-click="editPostCtrl.choseLink()">link</span>
+                  <span class="content-btn" ngf-select>upload</span>
+              </td>
+              <td class="choice-content-inputs" ng-if="editPostCtrl.showChoiceInputs">
+                  <input class="choice-input" name="text" type="text" ng-minlength="1" placeholder="choice name" ng-show="editPostCtrl.showTextInput" ng-model="editPostCtrl.choice">
+                  <input class="choice-input" name="pic" type="text" ng-minlength="1" placeholder="choice pic" ng-show="editPostCtrl.showLinkInput"  ng-model="editPostCtrl.picURI">
+                  <span class="choice-hide-input" ng-click="editPostCtrl.showChoiceInputs = false"> x </span>
+              </td>
+              <td class="choice-table-last">
+                  <span class="choice-add-btn" ng-click="editPostCtrl.addChoice()"> + </span>
+              </td>
+            </tr>
+
+          </table>
+    
+    </section>
+  </section>
+
+
+    <button class="edit-post-btn" type="submit">edit post</button>
+  </form>
+</section>

@@ -1,0 +1,67 @@
+<section class="edit-profile">
+
+  <form class="edit-profile-container"ng-submit="editProfileCtrl.updateProfile()"
+    novalidate>
+
+    <h3 class="edit-profile-header">Edit profile</h3>
+
+
+    <fieldset>
+        <label for="">name</label>
+        <input class="edit-title edit-input" name="name" type="text" ng-minlength="4" ng-model="editProfileCtrl.profile.name">
+    </fieldset>
+
+    <fieldset>
+        <label for="">profile picture</label>
+        <div class="pic-container">
+            <div class="edit-pic" ng-show="showEditPic" ng-mouseover="showEditPic = true" ng-mouseleave="showEditPic = false" ngf-select>
+                <i class="fa fa-camera" aria-hidden="true"></i>
+            </div>
+          <img class="profile-picture" ng-src="{{editProfileCtrl.profile.profilePicURI}}" ng-mouseover="showEditPic = true" ng-mouseleave="showEditPic = false">
+        </div>
+    </fieldset>
+
+    
+    <fieldset>
+      <label for=""> bio</label>
+      <textarea class="edit-desc edit-input" ng-model="editProfileCtrl.profile.bio"></textarea>
+    </fieldset>
+
+      <fieldset>
+        <label for="">profile banner </label>
+        <div class="pic-container"></div>
+          <div class="edit-pic" ng-show="showEditBanner" ng-mouseover="showEditBanner = true" ng-mouseleave="showEditBanner = false" ngf-select>
+              <i class="fa fa-camera" aria-hidden="true"></i>
+          </div>
+          <img class="profile-banner" ng-src="{{editProfileCtrl.profile.profileBannerURI}}" ng-mouseover="showEditBanner = true" ng-mouseleave="showEditBanner = false">
+      </div>
+      </fieldset>
+
+
+    <fieldset>
+      <label for="">Private</label>
+      <input type="checkbox" ng-model="editProfileCtrl.profile.private">
+    </fieldset>
+
+    <fieldset>
+        <table class="link-table">
+            <label for=""> links </label>
+          <tr class="links" ng-repeat="link in editProfileCtrl.profile.links">
+            <td> <a class="link" href="{{link.link}}"> {{ link.name}} </a> </td>
+            <td> <span class="remove-link-btn glyphicon glyphicon-minus" ng-click="editProfileCtrl.removeLink(link)"></span> </td>
+          </tr>
+          <tr class="add-link">
+            <td>
+              <input type="text" class="link-name" placeholder="name" ng-model="editProfileCtrl.link_name">
+              <input type="text" class="link-url" placeholder="link" ng-model="editProfileCtrl.link_link">
+            </td>
+            <td> <span class="add-link-btn glyphicon glyphicon-plus" ng-click="editProfileCtrl.addLink()"> </span> </td>
+          </tr>
+        </table>
+      </fieldset>
+
+
+    <button class="edit-btn" type="submit">update profile</button>
+  </form>
+
+</section>

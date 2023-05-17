@@ -1,0 +1,74 @@
+<section class="answer-item">
+  
+  <section class="answer-item-header">
+    <img class="header-pic" ng-src="{{answerItemCtrl.poster.profilePicURI}}" alt="">
+    <div class="header-names">
+      <span class="name"> {{ answerItemCtrl.poster.name}}</span>
+      <span class="date">  {{ answerItemCtrl.answer.created | date : 'mediumDate'}} </span>
+    </div>
+    <span class="header-options" uib-dropdown on-toggle="toggled(open)">
+        <span uib-dropdown-toggle alt=""> 
+            <span class="glyphicon glyphicon-option-horizontal"></span> 
+        </span>
+       <ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="simple-dropdown">
+         <li class="options-btn" ng-click="answerItemCtrl.setupEdit()">
+            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+              edit
+          </li>
+         <li class="options-btn" ng-click="answerItemCtrl.delete()">
+            <i class="fa fa-trash-o" aria-hidden="true"></i>
+           delete
+          </li>
+         <li class="options-btn" ng-click="answerItemCtrl.report()">
+           <i class="fa fa-flag-o" aria-hidden="true"></i>
+           report
+          </li>
+       </ul>
+     </span>
+  </section>
+
+  
+  <section class="answer-item-content">
+
+    <div class="content" ta-bind="text"   ng-if="!answerItemCtrl.editAnswer" ng-model="answerItemCtrl.answer.answer" ta-readonly='disabled'></div>
+    <div class="ta-editor answer-editor"  ng-if="answerItemCtrl.editAnswer && answerItemCtrl.isQuest" text-angular ng-model="answerItemCtrl.updatedAnswer.answer" ta-toolbar="[['bold','italics', 'underline', 'ul', 'ol', 'insertImage', 'insertLink', 'insertVideo'],['redo', 'undo']]"></div>
+    <div class="ta-editor comment-editor" ng-if="answerItemCtrl.editAnswer && !answerItemCtrl.isQuest" text-angular ng-model="answerItemCtrl.updatedAnswer.answer" ta-toolbar="[]"></div>
+
+    
+  </section>
+  
+  
+   
+  <section class="answer-item-footer">
+
+      <section class="edit-btns" ng-if="answerItemCtrl.editAnswer">
+          <span class="footer-btn edit-btn" ng-click="answerItemCtrl.editAnswer = false"> cancel</span>
+          <span class="footer-btn edit-btn update" ng-click="answerItemCtrl.edit()">  update </span>
+      </section>
+
+    <section ng-if="!answerItemCtrl.editAnswer">
+        <span class="footer-btn" ng-if="answerItemCtrl.isQuest" ng-click="answerItemCtrl.upvote()">
+            upvote {{answerItemCtrl.answer.upvotes.length}} 
+          </span>
+          <span class="footer-btn" ng-if="answerItemCtrl.isQuest" ng-click="answerItemCtrl.downvote()">
+            downvote {{answerItemCtrl.answer.downvotes.length}} 
+          </span>
+          <span class="footer-btn" ng-if="!answerItemCtrl.isQuest" ng-click="answerItemCtrl.upvote()">
+              <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> {{answerItemCtrl.answer.upvotes.length}} 
+          </span>
+          <span class="footer-btn" ng-if="!answerItemCtrl.isQuest" ng-click="answerItemCtrl.downvote()">
+              <i class="fa fa-thumbs-o-down" aria-hidden="true"></i> {{answerItemCtrl.answer.downvotes.length}} 
+            </span>
+          <span class="footer-btn" ng-click="answerItemCtrl.fetchReplies()"> 
+              <i class="fa fa-comment-o" aria-hidden="true"></i> {{answerItemCtrl.answer.replies.length}} 
+          </span>
+          <span class="footer-btn" ng-click="answerItemCtrl.showReply = true">
+            <p>reply</p>
+          </span>
+    </section>
+      
+  </section>
+  
+  <create-answer ng-if="answerItemCtrl.showReply === true" answer="answerItemCtrl.answer" showreply="answerItemCtrl.showReply"></create-answer>
+  <answer-item ng-repeat="reply in answerItemCtrl.repliesArr" parent="answerItemCtrl.answer" answer="reply"></answer-item>
+</section>

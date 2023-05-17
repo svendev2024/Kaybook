@@ -1,0 +1,129 @@
+
+.dynamic-grid {
+  position: relative;
+  display: none;
+}
+.dynamic-grid.angular-grid {
+  display: block;
+}
+
+.post-tile {
+  border-radius: 0;
+  border: 1px solid grey;
+  img {
+    max-width: 300px;
+  }
+  padding: 10px;
+  display: inline-block;
+  width: 100%;
+
+  .header {
+    display: grid;
+    grid-template-columns: 40px 100px auto 50px;
+    grid-template-rows: 1;
+    grid-template-areas: "pic names . options";
+
+    justify-items: center;
+    align-items: center;
+    .header-pic {
+      grid-area: pic;
+      width: 40px;
+      border-radius: 50%;
+    }
+    .header-names {
+      grid-area: names;
+    }
+    .header-options {
+      grid-area: options;
+    }
+
+  }
+
+  .body {
+    .title {
+      display: block;
+      margin: auto;
+      font-size: 20px;
+      font-weight: bold;
+      padding: 10px 0;
+    } 
+
+    .image {
+      img, iframe {
+        display: block;
+        width: 100%;
+      }
+    }
+
+    .content {
+      max-height: 300px;
+      overflow: hidden;
+     * {
+      font-size: 15px;
+      line-height: 1.6;
+     }
+       
+    }
+
+    .post-poll {
+      .poll {
+        max-width: 30%;
+        img {
+          max-width: 100%;
+        }
+      }
+    }
+
+  }
+
+}
+
+.grid {
+  list-style: none;
+  background: #ffffff;
+  box-sizing: border-box;
+  -moz-box-sizing : border-box;
+  -webkit-transition: all 0.6s ease-out;
+  transition: all 0.6s ease-out;
+
+  position: absolute;
+  list-style: none;
+  background: #ffffff;;
+  box-sizing: border-box;
+  -webkit-transition: all 400ms ease;
+  transition: all 400ms ease;
+  border-radius: 10px;
+
+}
+.grid.ng-leave {
+  -webkit-transition: all ease 400ms;
+  transition: all ease 400ms;
+}
+.grid.ng-leave.ng-leave-active {
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
+  opacity: 0;
+}
+.grid.ng-enter {
+  -webkit-transition: all ease 400ms;
+  transition: all ease 400ms;
+  -webkit-transition-delay: 500ms;
+  transition-delay: 500ms;
+  -webkit-transform: scale(0.5);
+   transform: scale(0.5);
+  opacity: 0;
+}
+.grid.ng-enter.ng-enter-active {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  opacity: 1;
+}
+
+.grid-img {
+  width: 100%;
+  vertical-align: middle;
+  -webkit-transition: opacity 0.6s ease-out;
+  transition: opacity 0.6s ease-out;
+  background-color: #fff;
+}
+

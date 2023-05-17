@@ -1,0 +1,34 @@
+.report {
+
+  font-size: 15px;
+
+  .title {
+    display: block;
+    text-align: center;
+  }
+  .set {
+    display: block;
+
+    margin: 10px;
+
+    textarea {
+      width: 100%;
+      height: 100px;
+      resize: none;
+    }
+
+  }
+
+  .report-btns {
+    display: block;
+    text-align: end;
+    font-size: 15px;
+    .report-btn {
+      display: inline-block;
+      margin: 10px;
+    }
+
+  }
+
+  
+}

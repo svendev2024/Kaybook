@@ -1,0 +1,276 @@
+
+.create-post {
+  display: block;
+
+  .create-header {
+    display: block;
+    width: 100%;
+    text-align: end;
+    padding: 10px;
+  }
+  
+
+  .post-choice-btns {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 1;
+    grid-template-areas: "img vid quest poll art";
+
+    height: 40px;
+    width: 100%;
+    margin-bottom: 10px;
+    .post-choice-btn {
+      color: dimgrey;
+      display: grid;
+      grid-template-columns: 1;
+      grid-template-rows: 2;
+      grid-template-areas: "icon"
+                           "text";
+      justify-items: center;
+      align-items: center;
+      .icon {
+        grid-area: icon;
+      }
+      .text {
+        grid-area: text;
+      }
+
+      &:hover {
+        color: dodgerblue;
+      }
+    }
+
+    .post-choice-img {
+      grid-area: img;
+    }
+    .post-choice-vid {
+      grid-area: vid;
+    }
+    .post-choice-quest {
+      grid-area: quest;
+    }
+    .post-choice-poll {
+      grid-area: poll;
+    }
+    .post-choice-art {
+      grid-area: art;
+    }
+  }
+
+  .post-title {
+    border: 1px solid grey;
+    display: block;
+    margin: 10px auto;
+    text-align: center;
+    width: 90%;
+    height: 35px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .post-pic-desc {
+    border: 1px solid grey;
+    display: block;
+    margin: 20px auto;
+    width: 90%;
+    overflow: hidden;
+    font-size: 15px;
+    line-height: 1.6;
+    resize: none;
+  }
+
+  .post-pic-ops {
+    display: block;
+    margin: 10px auto;
+    width: 90%;
+    text-align: center;
+    .pic-op {
+      outline: 1px solid black;
+      display: inline-block;
+      margin: 10px;
+      padding: 10px;
+      max-width: 40%;
+
+      &:hover {
+        background-color: white;
+        color:  #00D9FF;
+      }
+    }
+    .pic-input {
+      outline: 1px solid black;
+      display: inline-block;
+      margin: 10px;
+      width: 90%;
+      input {
+        width: 90%;
+        height: 30px;
+      }
+      .cancel {
+        width: 90%;
+      }
+    }
+
+    .post-preview {
+      .post-preview-pic {
+        width: 100%;
+      }
+    }
+
+
+  }
+  
+  .post-filter {
+
+    .post-filter-desc {
+      img {
+        width: 100%;
+      }
+      iframe {
+        width: 100%;
+      }
+
+      .filter-desc-edit {
+        border: 1px solid grey;
+        display: block;
+        margin: auto;
+        width: 100%;
+        overflow: hidden;
+        height: auto;
+      }
+
+
+      .replace-box { 
+        background-color: #5625A5;
+        color: goldenrod;
+        display: block;
+
+        .box-remove-btn {
+          outline: 1px solid black;
+          display: block;
+          width: 200px;
+          height: 30px;
+          max-width: 100%;
+          text-align: center;
+          margin: 10px auto;
+        }
+
+        .box-done-btn {
+          outline: 1px solid black;
+          display: block;
+          width: 200px;
+          height: 30px;
+          max-width: 100%;
+          text-align: center;
+          margin: 10px auto;
+        }
+
+      }
+    }
+
+  }
+
+  .post-poll {
+    display: block;
+    width: 100%;
+
+    tr {
+      vertical-align: middle;
+    }
+    td {
+      vertical-align: middle;
+      border-top: 1px solid #ddd;
+      padding: 10px;
+    }
+    .choice-header {
+      text-align: center;
+    }
+    .choice-table {
+      width: 90%;
+      margin: 10px auto;
+
+      
+      img {
+        width: 100px;
+        display: inline-block;
+      }
+
+      .choice-table-last {
+        max-width: 10%;
+        width: 30px;
+        text-align: center;
+      }
+
+      .choice-content-btns {
+        display: block;
+        text-align: center;
+        .content-btn {
+          outline: 1px solid grey;
+          display: inline-block;
+          padding: 10px;
+          max-height: 100%;
+          max-width: 100%;
+          margin: 0 2%;
+        }
+      }
+
+      .choice-content-inputs {
+        display: block;
+        height: 60px;
+        width: 100%;
+        .choice-input {
+          border: 1px solid grey;
+          display: inline-block;
+          width: 80%;
+          height: 100%;
+          margin: 0px;
+        }
+        .choice-hide-input {
+          margin: 0px;
+          display: inline-block;
+          padding: 10px;
+          max-height: 100%;
+          max-width: 15%;
+          min-height: 30px;
+          min-width: 30px;
+          outline: 1px solid grey;
+        }
+      }
+      
+      .choice-remove-btn {
+        display: inline-block;
+        padding: 10px;
+        max-height: 100%;
+        max-width: 100%;
+        min-height: 30px;
+        min-width: 30px;
+        background-color: red;
+        color: white;
+        outline: 1px solid grey;
+      }
+      .choice-add-btn {
+        outline: 1px solid grey;
+        display: inline-block;
+        padding: 10px;
+        max-height: 100%;
+        max-width: 100%;
+        background-color: #00D9FF;
+        color: white;
+      }
+    }
+  }
+
+  .create-post-btn {
+    display: block;
+    width: 250px;
+    max-width: 100%;
+    text-align: center;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: rgb(0, 195, 255);
+    border: 1px solid;
+    border-radius: 3px;
+    color: white;
+  }
+
+
+}

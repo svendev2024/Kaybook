@@ -1,0 +1,147 @@
+<section class="profile-item">
+  <div class="profile-item-row">
+    <section class="profile-item-nav" ng-class="{ 'nav-hidden' : profileItemCtrl.showMenu === true }">
+      <ul>
+        <li class="nav-op nav-head">
+          <img class="head-pic" ng-src="{{profileItemCtrl.profile.profilePicURI}}" ng-click="profileItemCtrl.goToMyProfile()">
+          <div class="head-names"  ng-click="profileItemCtrl.goToMyProfile()">
+            <p>{{ profileItemCtrl.profile.name}}</p> 
+            <p> @{{ profileItemCtrl.profile.name}}</p> 
+          </div>
+          <span class="glyphicon glyphicon-remove head-cancel" ng-if="profileItemCtrl.showMenu" ng-click="profileItemCtrl.showMenu = false"></span>
+        </li>
+        <li class="nav-op" ng-click="profileItemCtrl.goTo('timeline')">timeline</li>
+        <li class="nav-op" ng-click="profileItemCtrl.goTo('posts')">posts</li>
+        <li class="nav-op" ng-click="profileItemCtrl.goTo('chat')">chats</li>
+        <li class="nav-op" ng-click="profileItemCtrl.goTo('friends')">friends</li>
+        <li class="nav-op" ng-click="profileItemCtrl.goTo('pages')">pages</li>
+        <li class="nav-op" ng-click="profileItemCtrl.goTo('joined')">joined </li>
+        <li class="nav-op" ng-click="profileItemCtrl.goTo('notifs')">notifications</li>
+        <li class="nav-op" ng-click="profileItemCtrl.goToAccount()">account</li>
+      </ul>
+
+      <ul class="room-nav" ng-if="profileItemCtrl.showRooms">
+        <li class="">
+            <i class="fa fa-arrow-left room-nav-back" ng-click="profileItemCtrl.goTo('')" aria-hidden="true"></i>  
+            <span class="glyphicon glyphicon-remove room-nav-cancel" ng-if="profileItemCtrl.showMenu" ng-click="profileItemCtrl.showMenu = false"></span>
+        </li>
+        <li class="room-create">
+            <span class="room-create-btn" ng-click="profileItemCtrl.openSettingsModal()">
+              <i class="fa fa-plus" aria-hidden="true"></i> room
+            </span> 
+          </li>
+        <li class="room-op" ng-class="{ 'room-active': room._id == profileItemCtrl.room._id}" ng-repeat="room in profileItemCtrl.rooms" ng-click="profileItemCtrl.chooseRoom(room._id)">
+          {{ room.name}}
+        </li>
+      </ul>
+    </section>
+
+    <section class="profile-item-content" ng-if="!profileItemCtrl.showRooms">
+
+      <section class="content-container" ng-if="!profileItemCtrl.showHiddenSearch"> 
+        <div class="content-menu content-op">
+          <span class="menu-btn glyphicon glyphicon-menu-hamburger" ng-click="profileItemCtrl.showMenu = true"></span>
+        </div>
+
+        <div class="content-search">
+          <input class="search-op" type="text" placeholder="search for friends" ng-Change="profileItemCtrl.searchProfiles()" ng-Blur="profileItemCtrl.searchEnd()" ng-model="profileItemCtrl.searchName">
+          <div class="search-results search-op"   ng-repeat="profile in profileItemCtrl.resultsArr" ng-click="profileItemCtrl.goToProfile(profile._id)">
+            <img class="result-pic" ng-src="{{profile.profilePicURI}}" alt="" >  
+            <p class="result-name"> {{ profile.name }} </p>
+          </div>
+          <span class="search-op-btn" ng-click="profileItemCtrl.showHiddenSearch = true">
+            <i class="glyphicon glyphicon-search"></i>
+            search
+          </span>
+        </div>
+
+        <div class="content-create">
+          <span class="create-btn" ng-if="profileItemCtrl.showCreatePostBtn" ng-click="profileItemCtrl.openCreatePostModal()">
+            <i class="glyphicon glyphicon-plus"></i>
+            post
+          </span>
+          <span class="create-btn" ng-if="profileItemCtrl.showCreatePageBtn" ng-click="profileItemCtrl.openCreatePageModal()"> 
+              <i class="glyphicon glyphicon-plus"></i>
+            page
+          </span>
+          <span class="create-btn" ng-if="profileItemCtrl.showCreateRoomBtn" ng-click="profileItemCtrl.createRoom()">
+              <i class="glyphicon glyphicon-plus"></i>
+             room
+          </span>
+        </div>
+      </section>
+
+      <!-- <section class="content-container" ng-if="profileItemCtrl.showHiddenSearch"> -->
+        <section class="content-search-hidden" ng-if="profileItemCtrl.showHiddenSearch">
+          <input type="text" placeholder="search for friends" ng-Change="profileItemCtrl.searchProfiles()" ng-Blur="profileItemCtrl.searchEnd()" ng-model="profileItemCtrl.searchName">
+          <span class="search-cancel glyphicon glyphicon-remove" ng-click="profileItemCtrl.showHiddenSearch = false"></span>
+          <div class="search-results" ng-repeat="profile in profileItemCtrl.resultsArr" ng-click="profileItemCtrl.goToProfile(profile._id)">
+            <img class="result-pic" ng-src="{{profile.profilePicURI}}" alt=""> 
+            <p class="result-name"> {{ profile.name}} </p>
+          </div>
+        </section>
+      <!-- </section> -->
+
+      <section class="tile-container">
+        <post-tile posts="profileItemCtrl.posts"></post-tile>
+        <page-tile ng-repeat="page in profileItemCtrl.pages" page="page"></page-tile>
+        <!-- <room-tile ng-repeat="room in profileItemCtrl.roomsArr" room="room"></room-tile> -->
+        <!-- <profile-tile ng-repeat="profile in profileItemCtrl.profiles" profile="profile"></profile-tile> -->
+        <ul class="profiles-list" ng-if="profileItemCtrl.friendReq">
+            <!-- <input type="text"> -->
+            <div class="profile-list-head">
+              <span> Friend requests {{profileItemCtrl.profile.friendReq.length}}</span>
+              <span class="glyphicon glyphicon-menu-up" ng-show="!hideReqList" ng-click="hideReqList = true"></span>
+              <span class="glyphicon glyphicon-menu-down" ng-show="hideReqList" ng-click="hideReqList = false"></span>
+            </div>
+            <li class="profile-list-item" ng-repeat="profile in profileItemCtrl.friendReq" ng-show="!hideReqList">
+                <img class="list-item-image" src="{{profile.profilePicURI}}" alt="" ng-click="profileItemCtrl.goToProfile(profile._id)">
+                <div class="list-item-names" ng-click="profileItemCtrl.goToProfile(profile._id)">
+                  <p class="list-item-name"> {{profile.name}} </p>
+                  <p class="list-item-name"> @{{profile.name}} </p>
+                </div>
+                  
+                <span class="list-item-btn">
+                  <span class="item-add" ng-click="profileItemCtrl.acceptReq(profile._id)">
+                    Add friend
+                  </span>
+                </span>
+              </li>
+              </ul>
+        <ul class="profiles-list" ng-if="profileItemCtrl.profiles">
+
+          <div class="profile-list-head">
+            <span> Friends </span>
+            <span class="glyphicon glyphicon-menu-up" ng-show="!hideFriendsList" ng-click="hideFriendsList = true"></span>
+            <span class="glyphicon glyphicon-menu-down" ng-show="hideFriendsList" ng-click="hideFriendsList = false"></span>
+          </div>
+          <li class="profile-list-item" ng-repeat="profile in profileItemCtrl.profiles" ng-show="!hideFriendsList">
+            <img class="list-item-image" src="{{profile.profilePicURI}}" alt="" ng-click="profileItemCtrl.goToProfile(profile._id)">
+            <div class="list-item-names" ng-click="profileItemCtrl.goToProfile(profile._id)">
+              <p class="list-item-name"> {{profile.name}} </p>
+              <p class="list-item-name"> @{{profile.name}} </p>
+            </div>
+              
+            <span class="list-item-btn"> 
+              <span class="item-remove" ng-click="profileItemCtrl.unFriend(profile._id)">
+                Remove friend
+              </span>
+            </span>
+          </li>
+        </ul>
+      </section>
+
+
+
+
+    </section>
+
+    <section class="profile-item-room" ng-if="profileItemCtrl.showRooms">
+        <!-- <span class="menu-btn glyphicon glyphicon-menu-hamburger" ng-click="profileItemCtrl.showMenu = true"></span> -->
+        <room-item room="profileItemCtrl.room" showmenu="profileItemCtrl.showMenu" rooms="profileItemCtrl.rooms"></room-item>
+    </section>
+
+
+
+  </div>
+</section>

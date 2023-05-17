@@ -1,0 +1,32 @@
+<section>
+
+<h3>Account content</h3>
+
+ <ul class="accountContent-navbar">
+   <li ng-click="accountContentCtrl.fetchMyPosts()"> all posts</li>
+   <li ng-click="accountContentCtrl.filterType()"> video</li>
+   <li ng-click="accountContentCtrl.filterType('pic')"> img</li>
+   <li ng-click="accountContentCtrl.filterType('question')"> questions</li>
+   <li ng-click="accountContentCtrl.filterType('article')"> article</li>
+   <li ng-click="accountContentCtrl.filterType('poll')"> poll </li>
+   <li ng-click="accountContentCtrl.filterType('repost')"> repost </li>
+   <li ng-click="accountContentCtrl.fetchMyAnswers()"> answers </li>
+ </ul>
+
+ <section>
+    <post-tile ng-repeat="post in accountContentCtrl.posts" post="post"></post-tile>
+  </section>
+
+  <section>
+    <comment-item ng-repeat="comment in accountContentCtrl.myCommentsArray" 
+                  comment="comment" 
+                  profile="postItemCtrl.myProfile[0]">
+    </comment-item>
+  </section>
+
+  <section>
+    <answer-item ng-repeat="answer in accountContentCtrl.answersArr" answer="answer"></answer-item>
+  </section>
+
+
+  </section>

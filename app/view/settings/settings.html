@@ -1,0 +1,20 @@
+<section class="settings">
+
+<nav class="settings-style">
+  <section class="account-settings">
+    <div class="account-settings-nav">
+      <span class="nav-btn profile" ng-click="settingsCtrl.accountProfile()">profile</span>
+      <span class="nav-btn content" ng-click="settingsCtrl.accountContent()">my content</span>
+      <span class="nav-btn page" ng-click="settingsCtrl.accountPages()">pages</span>
+      <span class="nav-btn product" ng-click="settingsCtrl.accountProducts()">products</span>
+    </div>
+  </section>
+</nav>
+
+  <account-profile ng-if="settingsCtrl.showprofile"></account-profile>
+
+  <account-content ng-if="settingsCtrl.showcontent"></account-content>
+
+  <account-pages ng-if="settingsCtrl.showpages"></account-pages>
+
+  </section>

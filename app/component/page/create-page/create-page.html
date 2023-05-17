@@ -1,0 +1,14 @@
+<section class="create-page">
+
+  <h2 class="create-title">create page</h2>
+
+  <form name="createPageForm" ng-submit="createPageCtrl.createPage()">
+
+    <input name="name" type="text" ng-minlength="4" placeholder="name" ng-model="createPageCtrl.page.pageName">
+
+    <textarea name="" id="" cols="30" rows="10" placeholder="description" ng-model="createPageCtrl.page.pageDesc"></textarea>
+
+    <button class="create-btn" ng-disabled="createPageForm.$invalid">create page</button>
+  </form>
+  
+</section>

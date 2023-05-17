@@ -1,0 +1,83 @@
+
+.post-item {
+  
+  .post-item-head {
+
+    display: grid;
+    grid-template-columns: 50px auto auto 50px;
+    grid-template-rows: 1;
+    grid-template-areas: "pic owner . options";
+    grid-column-gap: 10px;
+    .head-pic {
+      grid-area: pic;
+      width: 50px;
+      height: 50px;
+    }
+    .head-owner {
+      grid-area: owner;
+      align-self: center;
+    }
+    .head-options {
+      grid-area: options;
+      align-self: center;
+
+      .menu-op {
+        outline: 1px solid grey;
+        padding: 10px 20px;
+      }
+    }
+  }
+
+  .post-item-main {
+    .post-title {
+      font-size: 20px;
+      font-weight: bold;
+      padding: 10px;
+    }
+
+    .post-img {
+      img, video {
+        width: 100%;
+      }
+    }
+
+    .post-desc {
+      width: 100%;
+      margin: 20px 0;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .post-content {
+      width: 100%;
+      margin-top: 10px;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+      
+
+    .post-poll {
+      .poll {
+        display: inline-block;
+        max-width: 30%;
+        display: inline-block;
+        font-size: 20px;
+        font-family: Verdana;
+
+        img {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+
+  .post-item-footer {
+    padding: 10px;
+    .footer-btn {
+      margin-left: 5%;
+    }
+  }
+
+  .post-item-comments { 
+  }
+}

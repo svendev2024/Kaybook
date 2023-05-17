@@ -1,0 +1,40 @@
+<section class="report">
+    <h2 class="title"> Report post</h2>
+
+  <form>
+    <div class="set">
+    <input type="checkbox" ng-model="reportCtrl.report.sexual">
+    <label for=""> Sexual content</label>
+    </div>
+    <div class="set">
+    <input type="checkbox" ng-model="reportCtrl.report.violent">
+    <label for=""> Violent </label>
+    </div>
+    <div class="set">
+    <input type="checkbox" ng-model="reportCtrl.report.abusive">
+    <label for=""> Abusive </label>
+    </div>
+    <div class="set">
+    <input type="checkbox" ng-model="reportCtrl.report.promotion">
+    <label for=""> Promotion </label>
+    </div>
+    <div class="set">
+    <input type="checkbox" ng-model="reportCtrl.report.spam">
+    <label for=""> Spam </label>
+    </div>
+    <div class="set">
+    <input type="checkbox" ng-model="reportCtrl.report.infringement">
+    <label for=""> Infringement </label>
+    </div>
+    <div class="set">
+    <textarea name="" placeholder="Any useful information about how it broke one of the rules" ng-model="reportCtrl.report.message"></textarea>
+    </div>
+    
+    <div class="report-btns">
+      <span class="report-btn" ng-click="reportCtrl.cancel()"> CANCEL </span>
+      <span class="report-btn" ng-click="reportCtrl.reportPost()"> REPORT </span>
+    </div>
+
+  </form>
+
+</section>
